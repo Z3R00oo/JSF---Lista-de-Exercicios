@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Cadastro</title>	
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Mostrar Livros" action="MostrarLivros.xhtml" immediate="true" />
+		<h1>Cadastro de Livros</h1>
+			<h:messages />
+			<h:panelGrid columns="1">
+				<h:outputText value="Nome do Livro *"/>
+				
+				<h:inputText value="#{livroControllerPedro.livro.nome}"
+							 required="true" 
+				             requiredMessage="O campo Nome do Livro é obrigatório!">
+				             <f:validateLength minimum="5" maximum="60" />
+				</h:inputText>
+				
+				<h:outputText value="Editora *"/>
+				
+				<h:inputText value="#{livroControllerPedro.livro.editora}"
+				             required="true" 
+				             requiredMessage="O campo Editora é obrigatório!">
+				             <f:validateLength minimum="5" maximum="60" />
+				</h:inputText> 
+				             
+				<h:outputText value="Valor do Livro *"/>
+				
+				<h:inputText value="#{livroControllerPedro.livro.valor}"
+				             required="true" 
+				             requiredMessage="O campo Valor do Livro é obrigatório!">
+				             <f:validateDoubleRange minimum="0.2" maximum="1999.9"/>
+				</h:inputText>
+				
+				<h:outputText value="Data de Cadastro *"/>
+				
+				<h:inputText value="#{livroControllerPedro.livro.dataCadastro}"
+				             required="true" 
+				             requiredMessage="O campo Data de Cadastro é obrigatório!">
+							 <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+				</h:inputText>
+			</h:panelGrid>
+			<br/>
+			<h:panelGrid columns="2">	
+				<h:commandButton value="Salvar" 
+							     action="#{livroControllerPedro.salvar}"/>
+							     
+				<h:commandButton value="Limpar"
+								 action="#{livroControllerPedro.limparCampos}"
+								 immediate="true"/>
+			</h:panelGrid>
+		</h:form>
+</h:body>
+</html>

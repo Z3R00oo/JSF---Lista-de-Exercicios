@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Mostrar Veiculos</title>		
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Cadastro de Veiculos" action="CadastroVeiculo.xhtml" immediate="true" />
+		<h1>Veiculos</h1>
+		<h:dataTable value="#{veiculoControllerPedro.lista}" var="veiculo" border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID"/>
+				</f:facet>
+				
+				<h:outputText value="#{veiculo.id}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="NOME"/>
+				</f:facet>
+				
+				<h:outputText value="#{veiculo.nome}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="MARCA"/>
+				</f:facet>
+				
+				<h:outputText value="#{veiculo.marca}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="PLACA"/>
+				</f:facet>
+				
+				<h:outputText value="#{veiculo.placa}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ANO FABRICAÇÃO"/>
+				</f:facet>
+				
+				<h:outputText value="#{veiculo.anoFabricacao}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="AÇÃO" />
+				</f:facet>
+				
+				<h:commandButton value="Editar" action="#{veiculoControllerPedro.editar}">
+					<f:setPropertyActionListener 
+						value="#{veiculo}" 
+						target="#{veiculoControllerPedro.veiculo}" />
+				</h:commandButton>
+				
+				<h:commandButton value="Excluir" action="#{veiculoControllerPedro.excluir}" onclick="return confirm('Confirma a exclusão ?')">
+					<f:setPropertyActionListener 
+						value="#{veiculo}" 
+						target="#{veiculoControllerPedro.veiculo}" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

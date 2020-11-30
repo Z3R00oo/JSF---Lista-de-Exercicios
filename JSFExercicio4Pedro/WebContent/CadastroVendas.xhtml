@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Cadastro</title>	
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Mostrar Vendas" action="MostrarVendas.xhtml" immediate="true" />
+		<h1>Cadastro de Vendas</h1>
+			<h:messages />
+			<h:panelGrid columns="1">
+				<h:outputText value="Cliente *"/>
+				
+				<h:inputText value="#{vendaControllerPedro.venda.cliente}"
+							 required="true" 
+				             requiredMessage="O campo Cliente é obrigatório!">
+				             <f:validateLength minimum="5" maximum="60" />
+				</h:inputText>
+				
+				<h:outputText value="Produto *"/>
+				
+				<h:inputText value="#{vendaControllerPedro.venda.produto}"
+				             required="true" 
+				             requiredMessage="O campo Produto é obrigatório!">
+				             <f:validateLength minimum="5" maximum="60" />
+				</h:inputText> 
+				             
+				<h:outputText value="Data da Venda *"/>
+				
+				<h:inputText value="#{vendaControllerPedro.venda.dataVenda}"
+				             required="true" 
+				             requiredMessage="O campo Data da Venda é obrigatório!">
+				             <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="America/Sao_Paulo"/>
+				</h:inputText>
+				
+				<h:outputText value="Valor do Produto *"/>
+				
+				<h:inputText value="#{vendaControllerPedro.venda.valor}"
+				             required="true" 
+				             requiredMessage="O campo Valor do Produto é obrigatório!">
+							 <f:validateDoubleRange minimum="0.2" maximum="800"/>
+				</h:inputText>
+			</h:panelGrid>
+			<br/>
+			<h:panelGrid columns="2">	
+				<h:commandButton value="Salvar" 
+							     action="#{vendaControllerPedro.salvar}"/>
+							     
+				<h:commandButton value="Limpar"
+								 action="#{vendaControllerPedro.limparCampos}"
+								 immediate="true"/>
+			</h:panelGrid>
+		</h:form>
+</h:body>
+</html>
